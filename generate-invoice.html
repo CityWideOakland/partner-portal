@@ -206,13 +206,7 @@
             <div class="section-label">Invoice Information</div>
             <div class="row3 invoice-info-row">
               <div class="field"><label>Invoice Number</label><input name="invoiceNumber" required placeholder="e.g. INV-1001"></div>
-              <div class="field"><label>Invoice period</label>
-                <select id="period-build" name="invoicePeriod" required>
-                  <option>July 2026</option>
-                  <option selected>August 2026</option>
-                  <option>September 2026</option>
-                </select>
-              </div>
+              <div class="field"><label>Invoice period</label><select id="period-build" name="invoicePeriod" required></select></div>
               <div class="field"><label>Invoice date <span class="opt">(auto-filled)</span></label><input id="invoice-date" name="invoiceDate" required placeholder=""></div>
             </div>
 
@@ -428,6 +422,26 @@
   wireDropzone('dz-logo', 'file-logo', ['.jpg','.jpeg','.png'], 'JPG, JPEG, PNG');
 
   const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function populateInvoicePeriods(select) {
+    if (!select) return;
+    const now = new Date();
+    [-1, 0, 1].forEach(offset => {
+      const date = new Date(
+        now.getFullYear(),
+        now.getMonth() + offset,
+        1
+      );
+      const label =
+        MONTHS[date.getMonth()] + ' ' + date.getFullYear();
+      const option = document.createElement('option');
+      option.value = label;
+      option.textContent = label;
+      if (offset === 0) {
+        option.selected = true;
+      }
+      select.appendChild(option);
+    });
+  }
   function fillLastDay(periodSel, dateInput) {
     const [monthName, yearStr] = periodSel.value.split(' ');
     const monthIdx = MONTHS.indexOf(monthName);
@@ -440,6 +454,7 @@
   }
   const periodBuild = document.getElementById('period-build');
   const dateBuild = document.getElementById('invoice-date');
+  populateInvoicePeriods(periodBuild);
   if (periodBuild && dateBuild) {
     periodBuild.addEventListener('change', () => fillLastDay(periodBuild, dateBuild));
     fillLastDay(periodBuild, dateBuild);
