@@ -1,0 +1,375 @@
+/* Shared City Wide Oakland partner-portal styles */
+:root {
+  --red: #D22730;
+  --black: #2D2A26;
+  --grey: #636466;
+  --lgrey: #C7C8CA;
+  --teal: #0AA6A9;
+  --teal-tint: #E2F4F5;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  background: #fff;
+  margin: 0;
+  color: var(--black);
+  min-height: 100vh;
+}
+
+/* Page shell: keeps the footer at the bottom on short pages without fixing it onscreen. */
+.page {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.topnav {
+  background: #fff;
+  height: 64px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(45,42,38,.08);
+}
+
+.topnav img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: clamp(220px, 28.6vw, 330px);
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 100%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 142px 40px 44px;
+}
+
+.hero-inner h1 {
+  color: #fff;
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  font-weight: 700;
+  max-width: 620px;
+}
+
+.hero-inner p {
+  color: rgba(255,255,255,.92);
+  font-size: 14.5px;
+  margin: 0;
+  max-width: 52ch;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Shared content containers */
+.content-section {
+  padding: 40px 0 60px;
+}
+
+.content-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.form-col {
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Shared note box */
+.notebox {
+  display: flex;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.notebox-bar {
+  background: var(--teal);
+  width: 44px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 14px;
+}
+
+.notebox-bar svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+.notebox-body {
+  background: var(--teal-tint);
+  flex: 1;
+  padding: 18px 22px;
+}
+
+.notebox-body .hd {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin: 0 0 9px;
+}
+
+.notebox-body ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--black);
+  line-height: 1.7;
+}
+
+.notebox-body li { margin-bottom: 5px; }
+.notebox-body li:last-child { margin-bottom: 0; }
+
+/* Shared form fields */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field label {
+  display: block;
+  min-height: 15px;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+.field label .opt {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  color: var(--grey);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--lgrey);
+  background: #fff;
+  color: var(--black);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+.field input,
+.field select {
+  height: 39px;
+}
+
+.field textarea {
+  min-height: 64px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--red);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.row2 > .field { min-width: 0; }
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.submit-status {
+  font-size: 13px;
+  color: var(--red);
+  margin: 0;
+}
+
+.form-actions {
+  width: 100%;
+  padding: 0;
+}
+
+.form-actions .btn {
+  width: 66.6667%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+  background: var(--red);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.confirm-panel {
+  background: #fff;
+  border: 1px solid var(--lgrey);
+  border-left: 4px solid var(--black);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+
+.confirm-panel .confirm-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--black);
+}
+
+.confirm-panel p:last-child {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--grey);
+}
+
+/* Footer */
+.foot {
+  margin-top: auto;
+  background: var(--black);
+  padding: 28px 40px;
+}
+
+.foot-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.foot-name {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #cfcdca;
+}
+
+.foot-name b {
+  color: #fff;
+  font-weight: 700;
+}
+
+.foot-barred {
+  display: flex;
+  align-items: stretch;
+  gap: 9px;
+}
+
+.foot-bar {
+  width: 2px;
+  background: var(--red);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.foot-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.foot-lines p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #9f9d9a;
+}
+
+.foot-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.foot-link:hover {
+  color: var(--red);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .topnav,
+  .foot {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .content-wrap,
+  .hero-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+}
