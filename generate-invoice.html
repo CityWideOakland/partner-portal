@@ -180,7 +180,7 @@
             <div class="section-label">Your Company Information</div>
             <div class="row2">
               <div class="field"><label>Company Name</label><input name="companyName" required placeholder="e.g. Nathan Window Care"></div>
-              <div class="field"><label>Contact Name</label><input name="contractorName" required placeholder="e.g. Priya Nathan"></div>
+              <div class="field"><label>Contact Name</label><input name="contactName" required placeholder="e.g. Priya Nathan"></div>
             </div>
             <div class="row2">
               <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"></div>
@@ -481,7 +481,7 @@
     let y = 56;
 
     const company = document.querySelector('[name="companyName"]').value.trim();
-    const contractor = document.querySelector('[name="contractorName"]').value.trim();
+    const contactName = document.querySelector('[name="contactName"]').value.trim();
     const email = document.querySelector('[name="email"]').value.trim();
     const phone = document.querySelector('[name="phone"]').value.trim();
     const streetAddress = document.querySelector('[name="streetAddress"]').value.trim();
@@ -510,7 +510,7 @@
     doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor(90);
     doc.text(streetAddress, marginX, y + 27);
     doc.text(`${city}, ${state} ${zipCode}`, marginX, y + 41);
-    doc.text(`${contractor}  |  ${email}`, marginX, y + 55);
+    doc.text(`${contactName}  |  ${email}`, marginX, y + 55);
     doc.text(phone, marginX, y + 69);
 
     y += 94;
@@ -582,7 +582,7 @@
       const fields = {
         formType: 'build',
         companyName: document.querySelector('[name="companyName"]').value.trim(),
-        contractorName: document.querySelector('[name="contractorName"]').value.trim(),
+        contactName: document.querySelector('[name="contactName"]').value.trim(),
         email: document.querySelector('[name="email"]').value.trim(),
         phone: document.querySelector('[name="phone"]').value.trim(),
         streetAddress: document.querySelector('[name="streetAddress"]').value.trim(),
