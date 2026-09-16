@@ -196,7 +196,7 @@
           </div>
 
           <div class="row2">
-            <div class="field"><label>Contact Name</label><input name="contractorName" required placeholder="e.g. Marcus Alvarez"></div>
+            <div class="field"><label>Contact Name</label><input name="contactName" required placeholder="e.g. Marcus Alvarez"></div>
             <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"></div>
           </div>
 
@@ -328,7 +328,7 @@
         const formData = new FormData();
         formData.append('formType', 'upload');
         formData.append('companyName', document.querySelector('[name="companyName"]').value.trim());
-        formData.append('contractorName', document.querySelector('[name="contractorName"]').value.trim());
+        formData.append('contactName', document.querySelector('[name="contactName"]').value.trim());
         formData.append('email', document.querySelector('[name="email"]').value.trim());
         formData.append('invoiceNumber', document.querySelector('[name="invoiceNumber"]').value.trim());
         formData.append('invoicePeriod', document.querySelector('[name="invoicePeriod"]').value);
