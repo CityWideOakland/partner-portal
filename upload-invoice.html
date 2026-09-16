@@ -201,15 +201,30 @@
           </div>
 
           <div class="row2">
-            <div class="field"><label>Invoice Period</label>
-              <select name="invoicePeriod" required>
-                <option>July 2026</option>
-                <option selected>August 2026</option>
-                <option>September 2026</option>
-              </select>
+            <div class="field">
+              <label>Invoice Period</label>
+              <select name="invoicePeriod" required></select>
             </div>
-            <div class="field"><label>Invoice Number</label><input name="invoiceNumber" required placeholder="e.g. INV-1001"></div>
+
+          <div class="field">
+            <label>Invoice Number</label>
+            <input
+              name="invoiceNumber"
+              required
+              placeholder="e.g. INV-1001"
+            >
           </div>
+
+          <div class="field">
+            <label>Invoice Total</label>
+            <input
+              name="totalAmount"
+              required
+              placeholder="$0.00"
+            >
+          </div>
+        </div>
+              
 
           <div class="field">
             <label>Upload Invoice File</label>
@@ -263,6 +278,39 @@
 </div>
 
 <script>
+  function populateInvoicePeriods(select) {
+  if (!select) return;
+
+  const now = new Date();
+
+  [-1, 0, 1].forEach(offset => {
+    const date = new Date(
+      now.getFullYear(),
+      now.getMonth() + offset,
+      1
+    );
+
+    const option = document.createElement('option');
+
+    option.value = date.toLocaleString('en-US', {
+      month: 'long',
+      year: 'numeric'
+    });
+
+    option.textContent = option.value;
+
+    if (offset === -1) {
+  option.selected = true;
+}
+
+    select.appendChild(option);
+  });
+}
+
+populateInvoicePeriods(
+  document.querySelector('[name="invoicePeriod"]')
+);
+  
   function wireDropzone(zoneId, inputId, allowedExts, allowedLabel) {
     const zone = document.getElementById(zoneId);
     if (!zone) return;
